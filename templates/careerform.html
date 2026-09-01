@@ -1,0 +1,2663 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Career Choice Survey</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(
+                135deg,
+                #eef2ff,
+                #fdf4ff
+            );
+            color: #333;
+        }
+
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 40px auto;
+        }
+
+
+        /* HEADER */
+
+        .header {
+            background: linear-gradient(
+                135deg,
+                #4f46e5,
+                #7c3aed
+            );
+
+            color: white;
+
+            padding: 35px;
+
+            border-radius: 18px;
+
+            text-align: center;
+
+            margin-bottom: 25px;
+        }
+
+
+        .header h1 {
+            margin: 0 0 10px;
+            font-size: 32px;
+        }
+
+
+        .header p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+
+        .info {
+            background: #fff7ed;
+
+            border-left: 5px solid #f97316;
+
+            padding: 15px;
+
+            margin-top: 20px;
+
+            border-radius: 8px;
+
+            color: #555;
+
+            text-align: left;
+        }
+
+
+        .required {
+            color: red;
+            font-weight: bold;
+        }
+
+
+        /* SECTIONS */
+
+        .section {
+            background: white;
+
+            padding: 25px;
+
+            margin-bottom: 20px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 4px 15px
+                rgba(0, 0, 0, 0.08);
+        }
+
+
+        .section h2 {
+            margin-top: 0;
+
+            color: #4f46e5;
+
+            font-size: 22px;
+        }
+
+
+        .section-description {
+            color: #666;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+
+            margin-bottom: 20px;
+        }
+
+
+        .question {
+            margin-bottom: 22px;
+        }
+
+
+        .question:last-child {
+            margin-bottom: 0;
+        }
+
+
+        label {
+            display: block;
+
+            font-weight: bold;
+
+            margin-bottom: 8px;
+        }
+
+
+        /* INPUTS */
+
+        input[type="text"],
+        input[type="number"],
+        input[type="tel"],
+        select {
+
+            width: 100%;
+
+            padding: 12px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 8px;
+
+            font-size: 15px;
+
+            background: white;
+        }
+
+
+        input:focus,
+        select:focus {
+
+            outline: none;
+
+            border-color: #4f46e5;
+
+            box-shadow:
+                0 0 0 2px
+                rgba(79, 70, 229, 0.1);
+        }
+
+
+        /* CHECKBOXES */
+
+        .checkbox-group {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 10px;
+        }
+
+
+        .checkbox-item {
+
+            font-weight: normal;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            margin: 0;
+        }
+
+
+        .checkbox-item input {
+
+            width: 17px;
+
+            height: 17px;
+
+            flex-shrink: 0;
+        }
+
+
+        /* RADIO BUTTONS */
+
+        .radio-group {
+
+            display: flex;
+
+            gap: 20px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .radio-item {
+
+            font-weight: normal;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+            margin: 0;
+        }
+
+
+        .radio-item input {
+
+            width: 17px;
+
+            height: 17px;
+
+            flex-shrink: 0;
+        }
+
+
+        /* RATING */
+
+        .scale-note {
+
+            color: #777;
+
+            font-size: 13px;
+
+            margin-top: -5px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .rating-row {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 15px 0;
+
+            border-bottom: 1px solid #eeeeee;
+        }
+
+
+        .rating-row:last-child {
+
+            border-bottom: none;
+        }
+
+
+        .factor-name {
+
+            flex: 1;
+
+            margin: 0;
+
+            font-weight: bold;
+
+            color: #444;
+        }
+
+
+        .radio-scale {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+        }
+
+
+        .radio-scale label {
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 5px;
+
+            font-weight: normal;
+
+            margin: 0;
+
+            font-size: 13px;
+        }
+
+
+        .radio-scale input {
+
+            width: 17px;
+
+            height: 17px;
+
+            accent-color: #4f46e5;
+        }
+
+
+        /* EMPLOYEE SECTION */
+
+        #employeeDetails {
+
+            background: #f8f7ff;
+
+            border-radius: 10px;
+
+            padding: 20px;
+
+            margin-top: 15px;
+
+            border: 1px solid #e4e1ff;
+        }
+
+
+        #employeeDetails h3 {
+
+            color: #4f46e5;
+
+            margin-top: 0;
+
+            margin-bottom: 20px;
+        }
+
+
+        /* SUBMIT */
+
+        .submit-section {
+
+            padding: 10px 0;
+        }
+
+
+        .submit-button {
+
+            width: 100%;
+
+            padding: 15px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #4f46e5;
+
+            color: white;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        .submit-button:hover {
+
+            background: #4338ca;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 650px) {
+
+            .container {
+
+                width: 95%;
+
+                margin: 20px auto;
+            }
+
+
+            .header {
+
+                padding: 25px 15px;
+            }
+
+
+            .header h1 {
+
+                font-size: 25px;
+            }
+
+
+            .section {
+
+                padding: 20px;
+            }
+
+
+            .rating-row {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+
+            .radio-scale {
+
+                width: 100%;
+
+                justify-content: space-between;
+
+                gap: 5px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- ========================================= -->
+    <!-- HEADER -->
+    <!-- ========================================= -->
+
+    <div class="header">
+
+        <h1>
+            Career Choice Survey
+        </h1>
+
+        <p>
+            Tell us about the career you want to choose.
+        </p>
+
+
+        <div class="info">
+
+            Questions marked with
+            <span class="required">*</span>
+            are required.
+
+            Other questions are optional.
+
+            You can leave them blank if you want.
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ========================================= -->
+    <!-- FORM START -->
+    <!-- ========================================= -->
+
+    <form
+        action="/submit"
+        method="POST"
+    >
+
+
+
+        <!-- ===================================== -->
+        <!-- 1. ABOUT YOU -->
+        <!-- ===================================== -->
+
+        <div class="section">
+
+            <h2>
+                1. About You
+            </h2>
+
+
+            <p class="section-description">
+
+                Tell us a little about yourself.
+
+                Only Name, Age and Study Year are required.
+
+            </p>
+
+
+
+            <!-- NAME -->
+
+            <div class="question">
+
+                <label>
+
+                    Your Name
+
+                    <span class="required">*</span>
+
+                </label>
+
+
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Enter your name"
+                    required
+                >
+
+            </div>
+
+
+
+            <!-- PHONE -->
+
+            <div class="question">
+
+                <label>
+                    Phone Number
+                </label>
+
+
+                <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Enter your phone number"
+                >
+
+            </div>
+
+
+
+            <!-- AGE -->
+
+            <div class="question">
+
+                <label>
+
+                    Your Age
+
+                    <span class="required">*</span>
+
+                </label>
+
+
+                <input
+                    type="number"
+                    name="age"
+                    min="10"
+                    max="100"
+                    placeholder="Enter your age"
+                    required
+                >
+
+            </div>
+
+
+
+            <!-- STUDY YEAR -->
+
+            <div class="question">
+
+                <label>
+
+                    What year are you studying in?
+
+                    <span class="required">*</span>
+
+                </label>
+
+
+                <select
+                    name="study_year"
+                    required
+                >
+
+                    <option value="">
+                        Select your year
+                    </option>
+
+
+                    <option value="School">
+                        School
+                    </option>
+
+
+                    <option value="12th">
+                        12th
+                    </option>
+
+
+                    <option value="1st Year">
+                        1st Year
+                    </option>
+
+
+                    <option value="2nd Year">
+                        2nd Year
+                    </option>
+
+
+                    <option value="3rd Year">
+                        3rd Year
+                    </option>
+
+
+                    <option value="Graduate">
+                        Graduate
+                    </option>
+
+
+                    <option value="Post Graduate">
+                        Post Graduate
+                    </option>
+
+
+                    <option value="Working">
+                        Working
+                    </option>
+
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ===================================== -->
+        <!-- 2. YOUR CAREER -->
+        <!-- ===================================== -->
+
+        <div class="section">
+
+            <h2>
+                2. Your Career
+            </h2>
+
+
+            <p class="section-description">
+
+                Tell us about the career you want to choose.
+
+            </p>
+
+
+
+            <!-- CAREER -->
+
+            <div class="question">
+
+                <label>
+                    What career do you want to choose?
+                </label>
+
+
+                <select
+                    name="career"
+                    id="career"
+                >
+
+                    <option value="">
+                        Select a career area
+                    </option>
+
+
+                    <option value="Medical & Healthcare">
+                        Medical & Healthcare
+                    </option>
+
+
+                    <option value="Engineering">
+                        Engineering
+                    </option>
+
+
+                    <option value="Computer & IT">
+                        Computer & IT
+                    </option>
+
+
+                    <option value="Commerce & Finance">
+                        Commerce & Finance
+                    </option>
+
+
+                    <option value="Business & Management">
+                        Business & Management
+                    </option>
+
+
+                    <option value="Law">
+                        Law
+                    </option>
+
+
+                    <option value="Design & Arts">
+                        Design & Arts
+                    </option>
+
+
+                    <option value="Teaching">
+                        Teaching
+                    </option>
+
+
+                    <option value="Government Jobs">
+                        Government Jobs
+                    </option>
+
+
+                    <option value="Science & Research">
+                        Science & Research
+                    </option>
+
+
+                    <option value="Media">
+                        Media
+                    </option>
+
+
+                    <option value="Hotel & Tourism">
+                        Hotel & Tourism
+                    </option>
+
+
+                    <option value="Business / Startup">
+                        Business / Startup
+                    </option>
+
+
+                    <option value="Defence">
+                        Defence
+                    </option>
+
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- SPECIALIZATION -->
+
+            <div class="question">
+
+                <label>
+                    Which field do you want to work in?
+                </label>
+
+
+                <select
+                    name="specialization"
+                    id="specialization"
+                >
+
+                    <option value="">
+                        First select a career area
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- CAREER CLARITY -->
+
+            <div class="question">
+
+                <label>
+                    How sure are you about your career?
+                </label>
+
+
+                <select
+                    name="career_clarity"
+                >
+
+                    <option value="">
+                        Select
+                    </option>
+
+
+                    <option value="1">
+                        1 - Not sure
+                    </option>
+
+
+                    <option value="2">
+                        2 - A little sure
+                    </option>
+
+
+                    <option value="3">
+                        3 - Somewhat sure
+                    </option>
+
+
+                    <option value="4">
+                        4 - Very sure
+                    </option>
+
+
+                    <option value="5">
+                        5 - Completely sure
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ===================================== -->
+        <!-- 3. WHY THIS CAREER -->
+        <!-- ===================================== -->
+
+        <div class="section">
+
+            <h2>
+                3. Why Do You Want This Career?
+            </h2>
+
+
+            <p class="section-description">
+
+                You can select more than one answer.
+
+                You can also leave this question blank.
+
+            </p>
+
+
+            <div class="checkbox-group">
+
+
+                <label class="checkbox-item">
+
+                    <input
+                        type="checkbox"
+                        name="reason"
+                        value="I like this field"
+                    >
+
+                    I like this field
+
+                </label>
+
+
+
+                <label class="checkbox-item">
+
+                    <input
+                        type="checkbox"
+                        name="reason"
+                        value="I am good at it"
+                    >
+
+                    I am good at it
+
+                </label>
+
+
+
+                <label class="checkbox-item">
+
+                    <input
+                        type="checkbox"
+                        name="reason"
+                        value="Good salary"
+                    >
+
+                    Good salary
+
+                </label>
+
+
+
+                <label class="checkbox-item">
+
+                    <input
+                        type="checkbox"
+                        name="reason"
+                        value="Good job opportunities"
+                    >
+
+                    Good job opportunities
+
+                </label>
+
+
+
+                <label class="checkbox-item">
+
+                    <input
+                        type="checkbox"
+                        name="reason"
+                        value="Job security"
+                    >
+
+                    Job security
+
+                </label>
+
+
+
+                <label class="checkbox-item">
+
+                    <input
+                        type="checkbox"
+                        name="reason"
+                        value="Parents suggested it"
+                    >
+
+                    My parents suggested it
+
+                </label>
+
+
+
+                <label class="checkbox-item">
+
+                    <input
+                        type="checkbox"
+                        name="reason"
+                        value="Someone inspired me"
+                    >
+
+                    Someone inspired me
+
+                </label>
+
+
+
+                <label class="checkbox-item">
+
+                    <input
+                        type="checkbox"
+                        name="reason"
+                        value="Better work life balance"
+                    >
+
+                    Better work-life balance
+
+                </label>
+
+
+
+                <label class="checkbox-item">
+
+                    <input
+                        type="checkbox"
+                        name="reason"
+                        value="Respect / Good name"
+                    >
+
+                    Respect / Good name
+
+                </label>
+
+
+
+                <label class="checkbox-item">
+
+                    <input
+                        type="checkbox"
+                        name="reason"
+                        value="Other reason"
+                    >
+
+                    Other reason
+
+                </label>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ===================================== -->
+        <!-- 4. WHO HELPED -->
+        <!-- ===================================== -->
+
+        <div class="section">
+
+            <h2>
+                4. Who Helped You Choose?
+            </h2>
+
+
+            <p class="section-description">
+
+                Who helped you decide your career?
+
+            </p>
+
+
+            <div class="radio-group">
+
+
+                <label class="radio-item">
+
+                    <input
+                        type="radio"
+                        name="who_helped"
+                        value="Myself"
+                    >
+
+                    Myself
+
+                </label>
+
+
+
+                <label class="radio-item">
+
+                    <input
+                        type="radio"
+                        name="who_helped"
+                        value="Parents"
+                    >
+
+                    Parents
+
+                </label>
+
+
+
+                <label class="radio-item">
+
+                    <input
+                        type="radio"
+                        name="who_helped"
+                        value="Friends"
+                    >
+
+                    Friends
+
+                </label>
+
+
+
+                <label class="radio-item">
+
+                    <input
+                        type="radio"
+                        name="who_helped"
+                        value="Teacher"
+                    >
+
+                    Teacher
+
+                </label>
+
+
+
+                <label class="radio-item">
+
+                    <input
+                        type="radio"
+                        name="who_helped"
+                        value="Other family member"
+                    >
+
+                    Other family member
+
+                </label>
+
+
+
+                <label class="radio-item">
+
+                    <input
+                        type="radio"
+                        name="who_helped"
+                        value="Someone working in this field"
+                    >
+
+                    Someone working in this field
+
+                </label>
+
+
+
+                <label class="radio-item">
+
+                    <input
+                        type="radio"
+                        name="who_helped"
+                        value="Social media / YouTube"
+                    >
+
+                    Social media / YouTube
+
+                </label>
+
+
+
+                <label class="radio-item">
+
+                    <input
+                        type="radio"
+                        name="who_helped"
+                        value="Other"
+                    >
+
+                    Other
+
+                </label>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ===================================== -->
+        <!-- 5. WHAT IS IMPORTANT -->
+        <!-- ===================================== -->
+
+        <div class="section">
+
+            <h2>
+                5. What Is Important To You?
+            </h2>
+
+
+            <p class="section-description">
+
+                Give a rating from 1 to 5.
+
+                1 = Not important
+
+                &nbsp;&nbsp;
+
+                5 = Very important
+
+            </p>
+
+
+
+            <!-- SALARY -->
+
+            <div class="rating-row">
+
+                <p class="factor-name">
+                    Good salary
+                </p>
+
+
+                <div class="radio-scale">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="salary_importance"
+                            value="1"
+                        >
+                        1
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="salary_importance"
+                            value="2"
+                        >
+                        2
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="salary_importance"
+                            value="3"
+                        >
+                        3
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="salary_importance"
+                            value="4"
+                        >
+                        4
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="salary_importance"
+                            value="5"
+                        >
+                        5
+                    </label>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- JOB OPPORTUNITIES -->
+
+            <div class="rating-row">
+
+                <p class="factor-name">
+                    Good job opportunities
+                </p>
+
+
+                <div class="radio-scale">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="job_opportunity_importance"
+                            value="1"
+                        >
+                        1
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="job_opportunity_importance"
+                            value="2"
+                        >
+                        2
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="job_opportunity_importance"
+                            value="3"
+                        >
+                        3
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="job_opportunity_importance"
+                            value="4"
+                        >
+                        4
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="job_opportunity_importance"
+                            value="5"
+                        >
+                        5
+                    </label>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- JOB SECURITY -->
+
+            <div class="rating-row">
+
+                <p class="factor-name">
+                    Job security
+                </p>
+
+
+                <div class="radio-scale">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="job_security_importance"
+                            value="1"
+                        >
+                        1
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="job_security_importance"
+                            value="2"
+                        >
+                        2
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="job_security_importance"
+                            value="3"
+                        >
+                        3
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="job_security_importance"
+                            value="4"
+                        >
+                        4
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="job_security_importance"
+                            value="5"
+                        >
+                        5
+                    </label>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CAREER GROWTH -->
+
+            <div class="rating-row">
+
+                <p class="factor-name">
+                    Career growth
+                </p>
+
+
+                <div class="radio-scale">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="career_growth_importance"
+                            value="1"
+                        >
+                        1
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="career_growth_importance"
+                            value="2"
+                        >
+                        2
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="career_growth_importance"
+                            value="3"
+                        >
+                        3
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="career_growth_importance"
+                            value="4"
+                        >
+                        4
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="career_growth_importance"
+                            value="5"
+                        >
+                        5
+                    </label>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- INTEREST -->
+
+            <div class="rating-row">
+
+                <p class="factor-name">
+                    My interest
+                </p>
+
+
+                <div class="radio-scale">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="interest_importance"
+                            value="1"
+                        >
+                        1
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="interest_importance"
+                            value="2"
+                        >
+                        2
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="interest_importance"
+                            value="3"
+                        >
+                        3
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="interest_importance"
+                            value="4"
+                        >
+                        4
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="interest_importance"
+                            value="5"
+                        >
+                        5
+                    </label>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- WORK LIFE BALANCE -->
+
+            <div class="rating-row">
+
+                <p class="factor-name">
+                    Work-life balance
+                </p>
+
+
+                <div class="radio-scale">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="work_life_balance_importance"
+                            value="1"
+                        >
+                        1
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="work_life_balance_importance"
+                            value="2"
+                        >
+                        2
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="work_life_balance_importance"
+                            value="3"
+                        >
+                        3
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="work_life_balance_importance"
+                            value="4"
+                        >
+                        4
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="work_life_balance_importance"
+                            value="5"
+                        >
+                        5
+                    </label>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- RESPECT -->
+
+            <div class="rating-row">
+
+                <p class="factor-name">
+                    Respect / Good name
+                </p>
+
+
+                <div class="radio-scale">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="respect_importance"
+                            value="1"
+                        >
+                        1
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="respect_importance"
+                            value="2"
+                        >
+                        2
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="respect_importance"
+                            value="3"
+                        >
+                        3
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="respect_importance"
+                            value="4"
+                        >
+                        4
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="respect_importance"
+                            value="5"
+                        >
+                        5
+                    </label>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ===================================== -->
+        <!-- 6. YOUR PREPARATION -->
+        <!-- ===================================== -->
+
+        <div class="section">
+
+            <h2>
+                6. Your Preparation
+            </h2>
+
+
+            <p class="section-description">
+
+                Tell us how you are preparing for your career.
+
+                You can leave these questions blank.
+
+            </p>
+
+
+
+            <!-- LEARNING HOURS -->
+
+            <div class="question">
+
+                <label>
+                    How many hours do you spend learning
+                    career skills every week?
+                </label>
+
+
+                <input
+                    type="number"
+                    name="weekly_learning_hours"
+                    min="0"
+                    placeholder="Example: 5"
+                >
+
+            </div>
+
+
+
+            <!-- CERTIFICATE -->
+
+            <div class="question">
+
+                <label>
+                    Do you have any certificate related to your career?
+                </label>
+
+
+                <div class="radio-group">
+
+                    <label class="radio-item">
+
+                        <input
+                            type="radio"
+                            name="certificate"
+                            value="Yes"
+                        >
+
+                        Yes
+
+                    </label>
+
+
+                    <label class="radio-item">
+
+                        <input
+                            type="radio"
+                            name="certificate"
+                            value="No"
+                        >
+
+                        No
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- INTERNSHIP -->
+
+            <div class="question">
+
+                <label>
+                    Have you done an internship?
+                </label>
+
+
+                <div class="radio-group">
+
+                    <label class="radio-item">
+
+                        <input
+                            type="radio"
+                            name="internship"
+                            value="Yes"
+                        >
+
+                        Yes
+
+                    </label>
+
+
+                    <label class="radio-item">
+
+                        <input
+                            type="radio"
+                            name="internship"
+                            value="No"
+                        >
+
+                        No
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PROJECT -->
+
+            <div class="question">
+
+                <label>
+                    Have you made a project related to your career?
+                </label>
+
+
+                <div class="radio-group">
+
+                    <label class="radio-item">
+
+                        <input
+                            type="radio"
+                            name="project"
+                            value="Yes"
+                        >
+
+                        Yes
+
+                    </label>
+
+
+                    <label class="radio-item">
+
+                        <input
+                            type="radio"
+                            name="project"
+                            value="No"
+                        >
+
+                        No
+
+                    </label>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ===================================== -->
+        <!-- 7. FUTURE PLANS -->
+        <!-- ===================================== -->
+
+        <div class="section">
+
+            <h2>
+                7. Your Future Plans
+            </h2>
+
+
+            <div class="question">
+
+                <label>
+                    What do you want to do after college?
+                </label>
+
+
+                <select name="after_college">
+
+                    <option value="">
+                        Select
+                    </option>
+
+
+                    <option value="Job">
+                        Get a job
+                    </option>
+
+
+                    <option value="Further Studies">
+                        Study more
+                    </option>
+
+
+                    <option value="Government Exams">
+                        Prepare for government exams
+                    </option>
+
+
+                    <option value="Business">
+                        Start a business
+                    </option>
+
+
+                    <option value="Internship">
+                        Do an internship
+                    </option>
+
+
+                    <option value="Undecided">
+                        I am not sure yet
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <div class="question">
+
+                <label>
+                    Where would you like to work?
+                </label>
+
+
+                <select name="work_location">
+
+                    <option value="">
+                        Select
+                    </option>
+
+
+                    <option value="My City">
+                        In my city
+                    </option>
+
+
+                    <option value="Another City">
+                        In another city
+                    </option>
+
+
+                    <option value="Anywhere in India">
+                        Anywhere in India
+                    </option>
+
+
+                    <option value="Outside India">
+                        Outside India
+                    </option>
+
+
+                    <option value="Work From Home">
+                        Work from home
+                    </option>
+
+
+                    <option value="Not Sure">
+                        Not sure
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <div class="question">
+
+                <label>
+                    What salary do you hope to get at the start?
+                </label>
+
+
+                <select name="starting_salary">
+
+                    <option value="">
+                        Select
+                    </option>
+
+
+                    <option value="Below 3 LPA">
+                        Below ₹3 lakh per year
+                    </option>
+
+
+                    <option value="3-5 LPA">
+                        ₹3–5 lakh per year
+                    </option>
+
+
+                    <option value="5-8 LPA">
+                        ₹5–8 lakh per year
+                    </option>
+
+
+                    <option value="8-12 LPA">
+                        ₹8–12 lakh per year
+                    </option>
+
+
+                    <option value="12-20 LPA">
+                        ₹12–20 lakh per year
+                    </option>
+
+
+                    <option value="Above 20 LPA">
+                        Above ₹20 lakh per year
+                    </option>
+
+
+                    <option value="Not Sure">
+                        Not sure
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ===================================== -->
+        <!-- 8. IF YOU ARE WORKING -->
+        <!-- ===================================== -->
+
+        <div class="section">
+
+            <h2>
+                8. If You Are Working
+            </h2>
+
+
+            <p class="section-description">
+
+                If you are currently working,
+                please answer these questions.
+
+                If you are not working,
+                you can leave this section blank.
+
+            </p>
+
+
+
+            <!-- CURRENTLY WORKING -->
+
+            <div class="question">
+
+                <label>
+                    Are you currently working?
+                </label>
+
+
+                <div class="radio-group">
+
+
+                    <label class="radio-item">
+
+                        <input
+                            type="radio"
+                            name="currently_working"
+                            value="Yes"
+                            onclick="showEmployeeDetails()"
+                        >
+
+                        Yes
+
+                    </label>
+
+
+
+                    <label class="radio-item">
+
+                        <input
+                            type="radio"
+                            name="currently_working"
+                            value="No"
+                            onclick="hideEmployeeDetails()"
+                        >
+
+                        No
+
+                    </label>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- EMPLOYEE DETAILS -->
+
+            <div
+                id="employeeDetails"
+                style="display: none;"
+            >
+
+
+                <h3>
+                    Your Work Details
+                </h3>
+
+
+
+                <!-- CURRENT JOB -->
+
+                <div class="question">
+
+                    <label>
+                        What is your current job?
+                    </label>
+
+
+                    <input
+                        type="text"
+                        name="current_job"
+                        placeholder="Example: Software Developer"
+                    >
+
+                </div>
+
+
+
+                <!-- INDUSTRY -->
+
+                <div class="question">
+
+                    <label>
+                        Which industry do you work in?
+                    </label>
+
+
+                    <input
+                        type="text"
+                        name="current_industry"
+                        placeholder="Example: IT, Banking, Healthcare"
+                    >
+
+                </div>
+
+
+
+                <!-- EXPERIENCE -->
+
+                <div class="question">
+
+                    <label>
+                        How many years have you been working?
+                    </label>
+
+
+                    <input
+                        type="number"
+                        name="years_experience"
+                        min="0"
+                        max="60"
+                        placeholder="Example: 5"
+                    >
+
+                </div>
+
+
+
+                <!-- CURRENT SALARY -->
+
+                <div class="question">
+
+                    <label>
+                        What is your current salary range?
+                    </label>
+
+
+                    <select name="current_salary">
+
+                        <option value="">
+                            Select
+                        </option>
+
+
+                        <option value="Below 3 LPA">
+                            Below ₹3 lakh per year
+                        </option>
+
+
+                        <option value="3-5 LPA">
+                            ₹3–5 lakh per year
+                        </option>
+
+
+                        <option value="5-8 LPA">
+                            ₹5–8 lakh per year
+                        </option>
+
+
+                        <option value="8-12 LPA">
+                            ₹8–12 lakh per year
+                        </option>
+
+
+                        <option value="12-20 LPA">
+                            ₹12–20 lakh per year
+                        </option>
+
+
+                        <option value="Above 20 LPA">
+                            Above ₹20 lakh per year
+                        </option>
+
+
+                        <option value="Prefer not to say">
+                            Prefer not to say
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- CAREER MATCH -->
+
+                <div class="question">
+
+                    <label>
+                        Is your current career the same career
+                        you wanted as a student?
+                    </label>
+
+
+                    <div class="radio-group">
+
+
+                        <label class="radio-item">
+
+                            <input
+                                type="radio"
+                                name="career_match"
+                                value="Yes"
+                            >
+
+                            Yes
+
+                        </label>
+
+
+
+                        <label class="radio-item">
+
+                            <input
+                                type="radio"
+                                name="career_match"
+                                value="No"
+                            >
+
+                            No
+
+                        </label>
+
+
+
+                        <label class="radio-item">
+
+                            <input
+                                type="radio"
+                                name="career_match"
+                                value="Not Sure"
+                            >
+
+                            Not sure
+
+                        </label>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CAREER CHANGE -->
+
+                <div class="question">
+
+                    <label>
+                        Did you change your career path?
+                    </label>
+
+
+                    <div class="radio-group">
+
+
+                        <label class="radio-item">
+
+                            <input
+                                type="radio"
+                                name="employee_career_change"
+                                value="Yes"
+                            >
+
+                            Yes
+
+                        </label>
+
+
+
+                        <label class="radio-item">
+
+                            <input
+                                type="radio"
+                                name="employee_career_change"
+                                value="No"
+                            >
+
+                            No
+
+                        </label>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ===================================== -->
+        <!-- SUBMIT -->
+        <!-- ===================================== -->
+
+        <div class="submit-section">
+
+            <button
+                type="submit"
+                class="submit-button"
+            >
+
+                Submit My Answers
+
+            </button>
+
+        </div>
+
+
+    </form>
+
+</div>
+
+
+
+<!-- ========================================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================================= -->
+
+<script>
+
+
+    /* ======================================== */
+    /* CAREER SPECIALIZATIONS */
+    /* ======================================== */
+
+
+    const careerSelect =
+        document.getElementById("career");
+
+
+    const specializationSelect =
+        document.getElementById("specialization");
+
+
+    const specializations = {
+
+
+        "Medical & Healthcare": [
+
+            "MBBS / Doctor",
+            "Dentist",
+            "Nursing",
+            "Pharmacy",
+            "Physiotherapy",
+            "Ayurveda",
+            "Homeopathy",
+            "Veterinary",
+            "Psychology",
+            "Medical Laboratory",
+            "Radiology",
+            "Other"
+
+        ],
+
+
+        "Engineering": [
+
+            "Computer Engineering",
+            "Mechanical Engineering",
+            "Civil Engineering",
+            "Electrical Engineering",
+            "Electronics Engineering",
+            "Chemical Engineering",
+            "Aerospace Engineering",
+            "Other"
+
+        ],
+
+
+        "Computer & IT": [
+
+            "Software Development",
+            "Data Science",
+            "Artificial Intelligence",
+            "Cybersecurity",
+            "Cloud Computing",
+            "Web Development",
+            "UI/UX",
+            "Game Development",
+            "Other"
+
+        ],
+
+
+        "Commerce & Finance": [
+
+            "Chartered Accountant",
+            "Banking",
+            "Finance",
+            "Accounting",
+            "Investment",
+            "Economics",
+            "Other"
+
+        ],
+
+
+        "Business & Management": [
+
+            "Marketing",
+            "Human Resources",
+            "Finance Management",
+            "Business Management",
+            "Operations",
+            "Entrepreneurship",
+            "Other"
+
+        ],
+
+
+        "Law": [
+
+            "Corporate Law",
+            "Criminal Law",
+            "Civil Law",
+            "Family Law",
+            "Cyber Law",
+            "Other"
+
+        ],
+
+
+        "Design & Arts": [
+
+            "Graphic Design",
+            "UI/UX Design",
+            "Fashion Design",
+            "Interior Design",
+            "Animation",
+            "Photography",
+            "Fine Arts",
+            "Other"
+
+        ],
+
+
+        "Teaching": [
+
+            "School Teacher",
+            "College Teacher",
+            "Professor",
+            "Special Education",
+            "Other"
+
+        ],
+
+
+        "Government Jobs": [
+
+            "UPSC",
+            "MPSC",
+            "Banking",
+            "Railway",
+            "Police",
+            "Civil Services",
+            "Other"
+
+        ],
+
+
+        "Science & Research": [
+
+            "Physics",
+            "Chemistry",
+            "Biology",
+            "Mathematics",
+            "Environmental Science",
+            "Research",
+            "Other"
+
+        ],
+
+
+        "Media": [
+
+            "Journalism",
+            "Content Creation",
+            "Film",
+            "Photography",
+            "Public Relations",
+            "Advertising",
+            "Other"
+
+        ],
+
+
+        "Hotel & Tourism": [
+
+            "Hotel Management",
+            "Travel",
+            "Tourism",
+            "Event Management",
+            "Other"
+
+        ],
+
+
+        "Business / Startup": [
+
+            "Online Business",
+            "Retail Business",
+            "Technology Startup",
+            "Food Business",
+            "Other"
+
+        ],
+
+
+        "Defence": [
+
+            "Army",
+            "Navy",
+            "Air Force",
+            "Other"
+
+        ],
+
+
+        "Other": [
+
+            "Other"
+
+        ]
+
+    };
+
+
+
+    careerSelect.addEventListener(
+        "change",
+        function () {
+
+
+            const selectedCareer =
+                this.value;
+
+
+            specializationSelect.innerHTML =
+                '<option value="">Select a field</option>';
+
+
+            if (
+                specializations[selectedCareer]
+            ) {
+
+
+                specializations[selectedCareer]
+                    .forEach(function (field) {
+
+
+                        const option =
+                            document.createElement("option");
+
+
+                        option.value =
+                            field;
+
+
+                        option.textContent =
+                            field;
+
+
+                        specializationSelect.appendChild(
+                            option
+                        );
+
+
+                    });
+
+            }
+
+        }
+    );
+
+
+
+    /* ======================================== */
+    /* EMPLOYEE DETAILS */
+    /* ======================================== */
+
+
+    function showEmployeeDetails() {
+
+
+        document.getElementById(
+            "employeeDetails"
+        ).style.display = "block";
+
+    }
+
+
+
+    function hideEmployeeDetails() {
+
+
+        document.getElementById(
+            "employeeDetails"
+        ).style.display = "none";
+
+
+        /*
+            Clear employee fields when
+            the person selects "No".
+        */
+
+
+        const employeeDetails =
+            document.getElementById(
+                "employeeDetails"
+            );
+
+
+        const inputs =
+            employeeDetails.querySelectorAll(
+                "input, select"
+            );
+
+
+        inputs.forEach(function (input) {
+
+
+            if (
+                input.type === "radio" ||
+                input.type === "checkbox"
+            ) {
+
+                input.checked = false;
+
+            }
+            else {
+
+                input.value = "";
+
+            }
+
+        });
+
+    }
+
+
+</script>
+
+
+</body>
+
+</html>
