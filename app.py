@@ -9,11 +9,10 @@ app = Flask(__name__)
 GOOGLE_SHEETS_URL = os.environ.get("GOOGLE_SHEETS_URL", "").strip()
 CSV_FILE = "career_data.csv"
 
+# Order of columns matching the Google Sheet
 HEADERS = [
-    "Name",
-    "Phone Number",
-    "Age",
     "Current Status",
+    "Age",
     "Study Year",
     "Current Job",
     "Current Industry",
@@ -87,13 +86,11 @@ def home():
 
 @app.route("/submit", methods=["POST"])
 def submit():
-    name = request.form.get("name", "")
-    phone = request.form.get("phone", "")
-    age = request.form.get("age", "")
+    # Common Demographics
     current_status = request.form.get("current_status", "")
-    study_year = request.form.get("study_year", "")
+    age = request.form.get("age", "")
 
-    # Working Professional fields
+    # Working Professional fields (Filled only if Working Professional)
     current_job = request.form.get("current_job", "")
     current_industry = request.form.get("current_industry", "")
     years_experience = request.form.get("years_experience", "")
@@ -102,14 +99,14 @@ def submit():
     employee_career_change = request.form.get("employee_career_change", "")
     career_change_reason = request.form.get("career_change_reason", "")
 
-    # Career & Goals
+    # Student fields (Filled only if Student)
+    study_year = request.form.get("study_year", "")
     career = request.form.get("career", "")
     specialization = request.form.get("specialization", "")
     career_clarity = request.form.get("career_clarity", "")
     reasons = ", ".join(request.form.getlist("reason"))
     who_helped = request.form.get("who_helped", "")
 
-    # Rating Importance
     salary_importance = request.form.get("salary_importance", "")
     job_opportunity_importance = request.form.get("job_opportunity_importance", "")
     job_security_importance = request.form.get("job_security_importance", "")
@@ -118,22 +115,18 @@ def submit():
     work_life_balance_importance = request.form.get("work_life_balance_importance", "")
     respect_importance = request.form.get("respect_importance", "")
 
-    # Preparation
     weekly_learning_hours = request.form.get("weekly_learning_hours", "")
     certificate = request.form.get("certificate", "")
     internship = request.form.get("internship", "")
     project = request.form.get("project", "")
 
-    # Future Plans
     after_college = request.form.get("after_college", "")
     work_location = request.form.get("work_location", "")
     starting_salary = request.form.get("starting_salary", "")
 
     row = [
-        name,
-        phone,
-        age,
         current_status,
+        age,
         study_year,
         current_job,
         current_industry,
@@ -166,10 +159,8 @@ def submit():
     payload = dict(zip(HEADERS, row))
 
     try:
-        # Primary storage: Google Sheets (persistent).
         send_to_google_sheets(payload)
     except Exception as error:
-        # Backup: Render's temporary filesystem. This is only a fallback.
         print("Google Sheets save failed:", error)
         try:
             save_local_backup(row)
