@@ -782,6 +782,21 @@
                     </option>
 
 
+                    <option value="Cooking / Culinary">
+                        Cooking / Culinary
+                    </option>
+
+
+                    <option value="Fitness / Sports">
+                        Fitness / Sports
+                    </option>
+
+
+                    <option value="Sales">
+                        Sales
+                    </option>
+
+
                     <option value="Other">
                         Other
                     </option>
@@ -1934,6 +1949,10 @@
                         Not sure
                     </option>
 
+                    <option value="Prefer not to say">
+                        Prefer not to say
+                    </option>
+
                 </select>
 
             </div>
@@ -2299,6 +2318,31 @@
                 </div>
 
 
+                <!-- CAREER CHANGE REASON -->
+
+                <div class="question" id="careerChangeReasonQuestion" style="display: none;">
+
+                    <label>
+                        If you changed your career path, what was the main reason?
+                    </label>
+
+                    <select name="career_change_reason" id="careerChangeReason">
+                        <option value="">Select</option>
+                        <option value="Better salary">Better salary</option>
+                        <option value="Better job opportunities">Better job opportunities</option>
+                        <option value="Personal interest changed">Personal interest changed</option>
+                        <option value="Better work-life balance">Better work-life balance</option>
+                        <option value="Lack of career growth">Lack of career growth</option>
+                        <option value="Job dissatisfaction">Job dissatisfaction</option>
+                        <option value="Family reasons">Family reasons</option>
+                        <option value="Job security">Job security</option>
+                        <option value="Other">Other</option>
+                        <option value="Prefer not to say">Prefer not to say</option>
+                    </select>
+
+                </div>
+
+
             </div>
 
         </div>
@@ -2533,6 +2577,50 @@
         ],
 
 
+        "Cooking / Culinary": [
+
+            "Chef / Professional Cook",
+            "Pastry Chef / Baker",
+            "Food Stylist",
+            "Culinary Instructor",
+            "Food Content Creator",
+            "Restaurant / Food Business",
+            "Other"
+
+        ],
+
+
+        "Fitness / Sports": [
+
+            "Fitness Trainer / Personal Trainer",
+            "Gym Instructor",
+            "Yoga Instructor",
+            "Sports Coach",
+            "Nutrition & Fitness Coach",
+            "Sports Management",
+            "Fitness Content Creator",
+            "Other"
+
+        ],
+
+
+        "Sales": [
+
+            "Sales Executive",
+            "Business Development",
+            "Sales Manager",
+            "Retail Sales",
+            "B2B Sales",
+            "Technical Sales",
+            "Real Estate Sales",
+            "Insurance Sales",
+            "Pharmaceutical Sales",
+            "Digital Sales",
+            "Other"
+
+        ],
+
+
         "Other": [
 
             "Other"
@@ -2655,6 +2743,26 @@
     }
 
 
+
+
+    /* CAREER CHANGE REASON */
+
+    const careerChangeReasonQuestion =
+        document.getElementById("careerChangeReasonQuestion");
+
+    const careerChangeReason =
+        document.getElementById("careerChangeReason");
+
+    document.querySelectorAll('input[name="employee_career_change"]').forEach(function (radio) {
+        radio.addEventListener("change", function () {
+            if (this.value === "Yes") {
+                careerChangeReasonQuestion.style.display = "block";
+            } else {
+                careerChangeReasonQuestion.style.display = "none";
+                careerChangeReason.value = "";
+            }
+        });
+    });
 </script>
 
 
