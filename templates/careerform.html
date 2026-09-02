@@ -345,32 +345,6 @@
         }
 
 
-        /* EMPLOYEE SECTION */
-
-        #employeeDetails {
-
-            background: #f8f7ff;
-
-            border-radius: 10px;
-
-            padding: 20px;
-
-            margin-top: 15px;
-
-            border: 1px solid #e4e1ff;
-        }
-
-
-        #employeeDetails h3 {
-
-            color: #4f46e5;
-
-            margin-top: 0;
-
-            margin-bottom: 20px;
-        }
-
-
         /* SUBMIT */
 
         .submit-section {
@@ -478,7 +452,7 @@
         </h1>
 
         <p>
-            Tell us about the career you want to choose.
+            Tell us about your career journey, goals and choices.
         </p>
 
 
@@ -524,7 +498,7 @@
 
                 Tell us a little about yourself.
 
-                Only Name, Age and Study Year are required.
+                Name, Age and Current Status are required.
 
             </p>
 
@@ -560,6 +534,9 @@
 
                 <label>
                     Phone Number
+                    <span style="color: #999; font-weight: normal; font-size: 13px;">
+                        (Optional)
+                    </span>
                 </label>
 
 
@@ -599,13 +576,57 @@
 
 
 
-            <!-- STUDY YEAR -->
+            <!-- CURRENT STATUS -->
 
             <div class="question">
 
                 <label>
 
-                    What year are you studying in?
+                    What is your current status?
+
+                    <span class="required">*</span>
+
+                </label>
+
+
+                <select
+                    name="current_status"
+                    id="currentStatus"
+                    required
+                    onchange="handleStatusChange()"
+                >
+
+                    <option value="">
+                        Select your status
+                    </option>
+
+
+                    <option value="Student">
+                        Student
+                    </option>
+
+
+                    <option value="Working Professional">
+                        Working Professional
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- STUDENT STUDY YEAR (CONDITIONAL) -->
+
+            <div
+                class="question"
+                id="studentStudyYearContainer"
+                style="display: none;"
+            >
+
+                <label>
+
+                    What are you currently studying?
 
                     <span class="required">*</span>
 
@@ -614,11 +635,11 @@
 
                 <select
                     name="study_year"
-                    required
+                    id="studyYearSelect"
                 >
 
                     <option value="">
-                        Select your year
+                        Select what you are studying
                     </option>
 
 
@@ -657,13 +678,338 @@
                     </option>
 
 
-                    <option value="Working">
-                        Working
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ===================================== -->
+        <!-- WORKING PROFESSIONAL DETAILS (CONDITIONAL) -->
+        <!-- ===================================== -->
+
+        <div
+            class="section"
+            id="workingProfessionalSection"
+            style="display: none;"
+        >
+
+            <h2>
+                Your Work Experience
+            </h2>
+
+
+            <p class="section-description">
+
+                Tell us about your current job and professional journey. These questions are optional.
+
+            </p>
+
+
+
+            <!-- CURRENT JOB -->
+
+            <div class="question">
+
+                <label>
+                    What is your current job?
+                </label>
+
+
+                <input
+                    type="text"
+                    name="current_job"
+                    placeholder="Example: Software Developer"
+                >
+
+            </div>
+
+
+
+            <!-- CURRENT INDUSTRY -->
+
+            <div class="question">
+
+                <label>
+                    Which industry do you work in?
+                </label>
+
+
+                <input
+                    type="text"
+                    name="current_industry"
+                    placeholder="Example: IT, Banking, Healthcare"
+                >
+
+            </div>
+
+
+
+            <!-- YEARS OF EXPERIENCE -->
+
+            <div class="question">
+
+                <label>
+                    How many years of experience do you have?
+                </label>
+
+
+                <input
+                    type="number"
+                    name="years_experience"
+                    min="0"
+                    max="60"
+                    placeholder="Example: 5"
+                >
+
+            </div>
+
+
+
+            <!-- CURRENT SALARY -->
+
+            <div class="question">
+
+                <label>
+                    What is your current salary range?
+                    <span style="color: #999; font-weight: normal; font-size: 13px;">
+                        (Optional)
+                    </span>
+                </label>
+
+
+                <select name="current_salary">
+
+                    <option value="">
+                        Select
+                    </option>
+
+
+                    <option value="Below 3 LPA">
+                        Below ₹3 lakh per year
+                    </option>
+
+
+                    <option value="3-5 LPA">
+                        ₹3–5 lakh per year
+                    </option>
+
+
+                    <option value="5-8 LPA">
+                        ₹5–8 lakh per year
+                    </option>
+
+
+                    <option value="8-12 LPA">
+                        ₹8–12 lakh per year
+                    </option>
+
+
+                    <option value="12-20 LPA">
+                        ₹12–20 lakh per year
+                    </option>
+
+
+                    <option value="Above 20 LPA">
+                        Above ₹20 lakh per year
+                    </option>
+
+
+                    <option value="Prefer not to say">
+                        Prefer not to say
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- CAREER MATCH -->
+
+            <div class="question">
+
+                <label>
+                    Is your current career the same career you wanted as a student?
+                </label>
+
+
+                <div class="radio-group">
+
+
+                    <label class="radio-item">
+
+                        <input
+                            type="radio"
+                            name="career_match"
+                            value="Yes"
+                        >
+
+                        Yes
+
+                    </label>
+
+
+
+                    <label class="radio-item">
+
+                        <input
+                            type="radio"
+                            name="career_match"
+                            value="No"
+                        >
+
+                        No
+
+                    </label>
+
+
+
+                    <label class="radio-item">
+
+                        <input
+                            type="radio"
+                            name="career_match"
+                            value="Not Sure"
+                        >
+
+                        Not sure
+
+                    </label>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CAREER CHANGE -->
+
+            <div class="question">
+
+                <label>
+                    Did you change your career path?
+                </label>
+
+
+                <div class="radio-group">
+
+
+                    <label class="radio-item">
+
+                        <input
+                            type="radio"
+                            name="employee_career_change"
+                            value="Yes"
+                            onclick="handleCareerChangeChange(true)"
+                        >
+
+                        Yes
+
+                    </label>
+
+
+
+                    <label class="radio-item">
+
+                        <input
+                            type="radio"
+                            name="employee_career_change"
+                            value="No"
+                            onclick="handleCareerChangeChange(false)"
+                        >
+
+                        No
+
+                    </label>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CAREER CHANGE REASON (CONDITIONAL) -->
+
+            <div
+                class="question"
+                id="careerChangeReasonContainer"
+                style="display: none;"
+            >
+
+                <label>
+                    If you changed your career path, what was the main reason?
+                    <span style="color: #999; font-weight: normal; font-size: 13px;">
+                        (Optional)
+                    </span>
+                </label>
+
+
+                <select
+                    name="career_change_reason"
+                    id="careerChangeReasonSelect"
+                >
+
+                    <option value="">
+                        Select reason
+                    </option>
+
+
+                    <option value="Better salary">
+                        Better salary
+                    </option>
+
+
+                    <option value="Better job opportunities">
+                        Better job opportunities
+                    </option>
+
+
+                    <option value="Personal interest changed">
+                        Personal interest changed
+                    </option>
+
+
+                    <option value="Better work-life balance">
+                        Better work-life balance
+                    </option>
+
+
+                    <option value="Lack of career growth">
+                        Lack of career growth
+                    </option>
+
+
+                    <option value="Job dissatisfaction">
+                        Job dissatisfaction
+                    </option>
+
+
+                    <option value="Family reasons">
+                        Family reasons
+                    </option>
+
+
+                    <option value="Job security">
+                        Job security
                     </option>
 
 
                     <option value="Other">
                         Other
+                    </option>
+
+
+                    <option value="Prefer not to say">
+                        Prefer not to say
                     </option>
 
                 </select>
@@ -687,7 +1033,7 @@
 
             <p class="section-description">
 
-                Tell us about the career you want to choose.
+                Tell us about the career you are interested in or currently pursuing.
 
             </p>
 
@@ -698,7 +1044,7 @@
             <div class="question">
 
                 <label>
-                    What career do you want to choose?
+                    What career path are you interested in or currently pursuing?
                 </label>
 
 
@@ -1949,10 +2295,6 @@
                         Not sure
                     </option>
 
-                    <option value="Prefer not to say">
-                        Prefer not to say
-                    </option>
-
                 </select>
 
             </div>
@@ -2007,341 +2349,12 @@
                         Not sure
                     </option>
 
+
+                    <option value="Prefer not to say">
+                        Prefer not to say
+                    </option>
+
                 </select>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- ===================================== -->
-        <!-- 8. IF YOU ARE WORKING -->
-        <!-- ===================================== -->
-
-        <div class="section">
-
-            <h2>
-                8. If You Are Working
-            </h2>
-
-
-            <p class="section-description">
-
-                If you are currently working,
-                please answer these questions.
-
-                If you are not working,
-                you can leave this section blank.
-
-            </p>
-
-
-
-            <!-- CURRENTLY WORKING -->
-
-            <div class="question">
-
-                <label>
-                    Are you currently working?
-                </label>
-
-
-                <div class="radio-group">
-
-
-                    <label class="radio-item">
-
-                        <input
-                            type="radio"
-                            name="currently_working"
-                            value="Yes"
-                            onclick="showEmployeeDetails()"
-                        >
-
-                        Yes
-
-                    </label>
-
-
-
-                    <label class="radio-item">
-
-                        <input
-                            type="radio"
-                            name="currently_working"
-                            value="No"
-                            onclick="hideEmployeeDetails()"
-                        >
-
-                        No
-
-                    </label>
-
-
-                </div>
-
-            </div>
-
-
-
-            <!-- EMPLOYEE DETAILS -->
-
-            <div
-                id="employeeDetails"
-                style="display: none;"
-            >
-
-
-                <h3>
-                    Your Work Details
-                </h3>
-
-
-
-                <!-- CURRENT JOB -->
-
-                <div class="question">
-
-                    <label>
-                        What is your current job?
-                    </label>
-
-
-                    <input
-                        type="text"
-                        name="current_job"
-                        placeholder="Example: Software Developer"
-                    >
-
-                </div>
-
-
-
-                <!-- INDUSTRY -->
-
-                <div class="question">
-
-                    <label>
-                        Which industry do you work in?
-                    </label>
-
-
-                    <input
-                        type="text"
-                        name="current_industry"
-                        placeholder="Example: IT, Banking, Healthcare"
-                    >
-
-                </div>
-
-
-
-                <!-- EXPERIENCE -->
-
-                <div class="question">
-
-                    <label>
-                        How many years have you been working?
-                    </label>
-
-
-                    <input
-                        type="number"
-                        name="years_experience"
-                        min="0"
-                        max="60"
-                        placeholder="Example: 5"
-                    >
-
-                </div>
-
-
-
-                <!-- CURRENT SALARY -->
-
-                <div class="question">
-
-                    <label>
-                        What is your current salary range?
-                    </label>
-
-
-                    <select name="current_salary">
-
-                        <option value="">
-                            Select
-                        </option>
-
-
-                        <option value="Below 3 LPA">
-                            Below ₹3 lakh per year
-                        </option>
-
-
-                        <option value="3-5 LPA">
-                            ₹3–5 lakh per year
-                        </option>
-
-
-                        <option value="5-8 LPA">
-                            ₹5–8 lakh per year
-                        </option>
-
-
-                        <option value="8-12 LPA">
-                            ₹8–12 lakh per year
-                        </option>
-
-
-                        <option value="12-20 LPA">
-                            ₹12–20 lakh per year
-                        </option>
-
-
-                        <option value="Above 20 LPA">
-                            Above ₹20 lakh per year
-                        </option>
-
-
-                        <option value="Prefer not to say">
-                            Prefer not to say
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-
-                <!-- CAREER MATCH -->
-
-                <div class="question">
-
-                    <label>
-                        Is your current career the same career
-                        you wanted as a student?
-                    </label>
-
-
-                    <div class="radio-group">
-
-
-                        <label class="radio-item">
-
-                            <input
-                                type="radio"
-                                name="career_match"
-                                value="Yes"
-                            >
-
-                            Yes
-
-                        </label>
-
-
-
-                        <label class="radio-item">
-
-                            <input
-                                type="radio"
-                                name="career_match"
-                                value="No"
-                            >
-
-                            No
-
-                        </label>
-
-
-
-                        <label class="radio-item">
-
-                            <input
-                                type="radio"
-                                name="career_match"
-                                value="Not Sure"
-                            >
-
-                            Not sure
-
-                        </label>
-
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- CAREER CHANGE -->
-
-                <div class="question">
-
-                    <label>
-                        Did you change your career path?
-                    </label>
-
-
-                    <div class="radio-group">
-
-
-                        <label class="radio-item">
-
-                            <input
-                                type="radio"
-                                name="employee_career_change"
-                                value="Yes"
-                            >
-
-                            Yes
-
-                        </label>
-
-
-
-                        <label class="radio-item">
-
-                            <input
-                                type="radio"
-                                name="employee_career_change"
-                                value="No"
-                            >
-
-                            No
-
-                        </label>
-
-
-                    </div>
-
-                </div>
-
-
-                <!-- CAREER CHANGE REASON -->
-
-                <div class="question" id="careerChangeReasonQuestion" style="display: none;">
-
-                    <label>
-                        If you changed your career path, what was the main reason?
-                    </label>
-
-                    <select name="career_change_reason" id="careerChangeReason">
-                        <option value="">Select</option>
-                        <option value="Better salary">Better salary</option>
-                        <option value="Better job opportunities">Better job opportunities</option>
-                        <option value="Personal interest changed">Personal interest changed</option>
-                        <option value="Better work-life balance">Better work-life balance</option>
-                        <option value="Lack of career growth">Lack of career growth</option>
-                        <option value="Job dissatisfaction">Job dissatisfaction</option>
-                        <option value="Family reasons">Family reasons</option>
-                        <option value="Job security">Job security</option>
-                        <option value="Other">Other</option>
-                        <option value="Prefer not to say">Prefer not to say</option>
-                    </select>
-
-                </div>
-
 
             </div>
 
@@ -2680,89 +2693,68 @@
 
 
     /* ======================================== */
-    /* EMPLOYEE DETAILS */
+    /* DYNAMIC FORM BEHAVIOUR */
     /* ======================================== */
 
-
-    function showEmployeeDetails() {
-
-
-        document.getElementById(
-            "employeeDetails"
-        ).style.display = "block";
-
-    }
-
-
-
-    function hideEmployeeDetails() {
-
-
-        document.getElementById(
-            "employeeDetails"
-        ).style.display = "none";
-
-
-        /*
-            Clear employee fields when
-            the person selects "No".
-        */
-
-
-        const employeeDetails =
-            document.getElementById(
-                "employeeDetails"
-            );
-
-
-        const inputs =
-            employeeDetails.querySelectorAll(
-                "input, select"
-            );
-
-
+    function clearContainerInputs(container) {
+        const inputs = container.querySelectorAll("input, select, textarea");
         inputs.forEach(function (input) {
-
-
-            if (
-                input.type === "radio" ||
-                input.type === "checkbox"
-            ) {
-
+            if (input.type === "radio" || input.type === "checkbox") {
                 input.checked = false;
-
-            }
-            else {
-
+            } else {
                 input.value = "";
-
             }
-
         });
+    }
 
+    function handleStatusChange() {
+        const status = document.getElementById("currentStatus").value;
+        const studentContainer = document.getElementById("studentStudyYearContainer");
+        const studentSelect = document.getElementById("studyYearSelect");
+        const workingSection = document.getElementById("workingProfessionalSection");
+
+        if (status === "Student") {
+            // Show Student field & set required
+            studentContainer.style.display = "block";
+            studentSelect.required = true;
+
+            // Hide Working Professional section & clear its fields
+            workingSection.style.display = "none";
+            clearContainerInputs(workingSection);
+            document.getElementById("careerChangeReasonContainer").style.display = "none";
+        } else if (status === "Working Professional") {
+            // Hide Student field, clear it, and remove required
+            studentContainer.style.display = "none";
+            studentSelect.required = false;
+            studentSelect.value = "";
+
+            // Show Working Professional section
+            workingSection.style.display = "block";
+        } else {
+            // No selection: hide and clear both
+            studentContainer.style.display = "none";
+            studentSelect.required = false;
+            studentSelect.value = "";
+
+            workingSection.style.display = "none";
+            clearContainerInputs(workingSection);
+            document.getElementById("careerChangeReasonContainer").style.display = "none";
+        }
+    }
+
+    function handleCareerChangeChange(hasChanged) {
+        const reasonContainer = document.getElementById("careerChangeReasonContainer");
+        const reasonSelect = document.getElementById("careerChangeReasonSelect");
+
+        if (hasChanged) {
+            reasonContainer.style.display = "block";
+        } else {
+            reasonContainer.style.display = "none";
+            reasonSelect.value = "";
+        }
     }
 
 
-
-
-    /* CAREER CHANGE REASON */
-
-    const careerChangeReasonQuestion =
-        document.getElementById("careerChangeReasonQuestion");
-
-    const careerChangeReason =
-        document.getElementById("careerChangeReason");
-
-    document.querySelectorAll('input[name="employee_career_change"]').forEach(function (radio) {
-        radio.addEventListener("change", function () {
-            if (this.value === "Yes") {
-                careerChangeReasonQuestion.style.display = "block";
-            } else {
-                careerChangeReasonQuestion.style.display = "none";
-                careerChangeReason.value = "";
-            }
-        });
-    });
 </script>
 
 
