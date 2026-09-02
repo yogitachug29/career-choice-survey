@@ -99,6 +99,7 @@ def submit():
     current_salary = request.form.get("current_salary", "")
     career_match = request.form.get("career_match", "")
     employee_career_change = request.form.get("employee_career_change", "")
+    career_change_reason = request.form.get("career_change_reason", "")
 
     row = [
         name, phone, age, study_year, career, specialization, career_clarity,
@@ -107,7 +108,8 @@ def submit():
         work_life_balance_importance, respect_importance, weekly_learning_hours,
         certificate, internship, project, after_college, work_location,
         starting_salary, currently_working, current_job, current_industry,
-        years_experience, current_salary, career_match, employee_career_change
+        years_experience, current_salary, career_match, employee_career_change,
+        career_change_reason
     ]
 
     payload = dict(zip(HEADERS, row))
